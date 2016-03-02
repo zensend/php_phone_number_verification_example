@@ -1,0 +1,58 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "833d1c808be1e01099b21a3e0eb299ae",
+    "packages": [
+        {
+            "name": "zensend/zensend",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zensend/zensend_php_api.git",
+                "reference": "57631e0e962984b17a2d3e5607f2cf4ec8129731"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zensend/zensend_php_api/zipball/57631e0e962984b17a2d3e5607f2cf4ec8129731",
+                "reference": "57631e0e962984b17a2d3e5607f2cf4ec8129731",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ZenSend\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ZenSend"
+                }
+            ],
+            "description": "ZenSend PHP Library",
+            "time": "2015-11-17 15:17:46"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

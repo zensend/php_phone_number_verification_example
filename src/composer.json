@@ -1,0 +1,14 @@
+{
+    "name": "zensend/msisdn_verification",
+    "description": "Msisdn Verification  using Zensend API",
+    "require": {
+        "zensend/zensend": "~1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tech",
+            "email": "tech@fonix.com"
+        }
+    ]
+}

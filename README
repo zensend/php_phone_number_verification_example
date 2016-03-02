@@ -1,0 +1,5 @@
+Edit config.inc to add your API key.
+
+Visit http://host/number_verify.php to run the number verification flow.
+
+This is intended to run under apache. The .inc files should not be accessible from the web and are denied via the .htacccess configuration.
