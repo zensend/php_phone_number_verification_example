@@ -6,7 +6,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   include("number_verify_form.inc");
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  require "rand.inc";
   require 'vendor/autoload.php';
 
   $msisdn = $_POST["msisdn"];

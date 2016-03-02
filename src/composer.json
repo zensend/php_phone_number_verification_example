@@ -2,7 +2,8 @@
     "name": "zensend/msisdn_verification",
     "description": "Msisdn Verification  using Zensend API",
     "require": {
-        "zensend/zensend": "~1.0"
+        "zensend/zensend": "~1.0",
+        "paragonie/random_compat": "~1.2"
     },
     "license": "MIT",
     "authors": [
