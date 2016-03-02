@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   require 'vendor/autoload.php';
 
   $msisdn = $_POST["msisdn"];
-  $token = strval(random_number_between(100000, 999999 + 1));
+  $token = strval(random_int(100000, 999999));
 
   $client = new ZenSend\Client(API_KEY);
 
