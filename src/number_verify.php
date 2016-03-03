@@ -38,9 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   
   session_start();
 
-  $_SESSION["msisdn_to_verify"] = $msisdn;
-  $_SESSION["token"] = $token;
-  $_SESSION["attempts"] = 0;
+  $details = array("msisdn" => $msisdn,
+                   "token" => $token,
+                   "attempts" => 0,
+                   "created_at" => round(microtime(true) * 1000));
+
+  $_SESSION["msisdn_verification"] = $details;
 
   header("Location: /token_verify.php");
   exit();

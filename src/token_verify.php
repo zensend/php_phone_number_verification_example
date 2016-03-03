@@ -1,6 +1,37 @@
 <?php
 require 'config.inc';
 
+function check_token($token) {
+  if (!isset($_SESSION["msisdn_verification"])) {
+    return "resend_token";
+  }
+
+  $details = $_SESSION["msisdn_verification"];
+  if (round(microtime(true) * 1000) > $details["created_at"] + EXPIRATION_TIME) {
+    return "resend_token";
+  }
+
+
+  if ($details["attempts"] >= MAX_VERIFY_ATTEMPTS) {
+    return "max_attempts";
+  }
+
+  if (hash_equals($token, $details["token"])) { 
+    $_SESSION["verified_msisdn"] = $details["msisdn"];
+    unset($_SESSION["msisdn_verification"]);
+    return TRUE;
+  }
+
+  $details["attempts"] = $details["attempts"] + 1;
+  $_SESSION["msisdn_verification"] = $details;
+  if ($details["attempts"] >= MAX_VERIFY_ATTEMPTS) {
+    return "max_attempts";
+  } else {
+    return "invalid_token";
+  }
+
+}
+
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
   $error = '';
   include("token_verify_form.inc");
@@ -9,32 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   $token = $_POST["token"];
 
   session_start();
-
-
-  if (isset($_SESSION["token"])) {
-    if ($_SESSION["attempts"] < MAX_VERIFY_ATTEMPTS) {
-
-      if (hash_equals($token, $_SESSION["token"])) {
-        $_SESSION["verified_msisdn"] = $_SESSION["msisdn_to_verify"];
-        unset($_SESSION["msisdn"]);
-        unset($_SESSION["token"]);
-        unset($_SESSION["attempts"]);
-        header("Location: /success.php");
-      } else {
-        $_SESSION["attempts"] = $_SESSION["attempts"] + 1;
-        if ($_SESSION["attempts"] >= MAX_VERIFY_ATTEMPTS) {
-          $error = "max_attempts";
-        } else {
-          $error = "invalid_token";
-        }
-      }
-    } else {
-      $error = "max_attempts";
-    }
-  } else {
-    $error = "resend_token";
+  $error = check_token($token);
+  if ($error === TRUE) {
+    header("Location: /success.php");
+    exit();
   }
-
   include("token_verify_form.inc");
   
 } else {
