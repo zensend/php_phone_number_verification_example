@@ -3,7 +3,8 @@
     "description": "Msisdn Verification  using Zensend API",
     "require": {
         "zensend/zensend": "~1.0",
-        "paragonie/random_compat": "~1.2"
+        "paragonie/random_compat": "~1.2",
+        "indigophp/hash-compat": "~1.1"
     },
     "license": "MIT",
     "authors": [

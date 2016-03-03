@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   $error = '';
   include("token_verify_form.inc");
 } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  
+  require 'vendor/autoload.php'; 
   $token = $_POST["token"];
 
   session_start();
